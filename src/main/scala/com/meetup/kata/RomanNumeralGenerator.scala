@@ -7,16 +7,15 @@ object RomanNumeralGenerator {
 
 
   def generate(i: Int): String = {
-    @tailrec
-    def genRec(i: Int, acc: String): String = {
-      if (i == 0) acc
+
+    symbols.foldLeft((i, "") ){(acc,t)=>
+      if (acc._1 < t._1) acc
       else {
-        val maxSymbol = symbols.filter(s => s._1 <= i).head
-        genRec(i - maxSymbol._1, acc + maxSymbol._2)
+        val repetitions = acc._1 / t._1
+        (acc._1-(t._1*repetitions), acc._2 + (t._2 * repetitions))
       }
-    }
+    }._2
 
-    genRec(i, "")
+
   }
-
 }

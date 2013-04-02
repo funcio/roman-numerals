@@ -46,7 +46,5 @@ class RomanNumeralTest extends FlatSpec with ShouldMatchers {
     RomanNumeralGenerator.generate(49) should be ("XLIX")
   }
 
-  it should "return XCVIII when 98 is to be parsed" in {
-    RomanNumeralGenerator.generate(98) should be ("XCVIII")
-  }
+
 }
